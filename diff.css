@@ -13,11 +13,14 @@ a{
     margin: 5px;
 }
 h1{
-    background: red;
-    text-align: center;
+    background: gray;
+    font-family: 'Courier New', Courier, monospace;
 }
 h2{
-    background: gray;
+    background: green;
     text-align: center;
-    text-transform: uppercase;
+    text-decoration: underline;
+}
+p{
+    font-family: sans-serif;
 }
