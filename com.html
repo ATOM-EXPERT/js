@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logical vs Comparison Operators</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+      overflow-x: auto;
+    }
+  </style>
+  <link rel="stylesheet" href="array.css">
+</head>
+<body>
+  <ul class="list">
+    <li><a href="index.html">FIRST</a></li>
+    <li><a href="array.html">ARRAY</a></li>
+    <li><a href="diff.html">DIFF</a></li>
+    <li><a href="aboutme.html">ABOUT ME</a></li>
+    <li><a href="ntime.html">TIME</a></li>
+</ul>
+
+  <h1>Logical vs Comparison Operators</h1>
+
+  <h2>What Are Comparison Operators?</h2>
+  <p><strong>Definition:</strong> Comparison operators compare two values and return a Boolean result: either <code>true</code> or <code>false</code>.</p>
+
+  <h3>Common Comparison Operators</h3>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+    <tr><td>==</td><td>Equal to (value)</td><td><code>5 == "5"</code></td><td>true</td></tr>
+    <tr><td>===</td><td>Equal to (value & type)</td><td><code>5 === "5"</code></td><td>false</td></tr>
+    <tr><td>!=</td><td>Not equal to</td><td><code>5 != 4</code></td><td>true</td></tr>
+    <tr><td>!==</td><td>Not equal (value & type)</td><td><code>5 !== "5"</code></td><td>true</td></tr>
+    <tr><td>></td><td>Greater than</td><td><code>10 > 7</code></td><td>true</td></tr>
+    <tr><td><</td><td>Less than</td><td><code>3 < 5</code></td><td>true</td></tr>
+    <tr><td>>=</td><td>Greater than or equal to</td><td><code>5 >= 5</code></td><td>true</td></tr>
+    <tr><td><=</td><td>Less than or equal to</td><td><code>4 <= 3</code></td><td>false</td></tr>
+  </table>
+
+  <h3>Example:</h3>
+  <pre><code>let age = 18;
+console.log(age >= 18); // true
+console.log(age == "18"); // true (in JS)</code></pre>
+
+  <h2>What Are Logical Operators?</h2>
+  <p><strong>Definition:</strong> Logical operators combine or invert Boolean values (usually from comparisons).</p>
+
+  <h3>Common Logical Operators</h3>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+    <tr><td>&&</td><td>AND — both must be true</td><td><code>true && true</code></td><td>true</td></tr>
+    <tr><td>||</td><td>OR — one must be true</td><td><code>true || false</code></td><td>true</td></tr>
+    <tr><td>!</td><td>NOT — inverts the result</td><td><code>!true</code></td><td>false</td></tr>
+  </table>
+
+  <h3>Example:</h3>
+  <pre><code>let age = 20;
+let hasID = true;
+
+if (age >= 18 && hasID) {
+  console.log("You can enter.");
+}</code></pre>
+
+  <h2>Key Differences</h2>
+  <table>
+    <tr><th>Feature</th><th>Comparison Operators</th><th>Logical Operators</th></tr>
+    <tr><td>Purpose</td><td>Compare values</td><td>Combine or invert Boolean logic</td></tr>
+    <tr><td>Return Type</td><td>Boolean</td><td>Boolean</td></tr>
+    <tr><td>Examples</td><td><code>==, >, !=</code></td><td><code>&&, ||, !</code></td></tr>
+    <tr><td>Used With</td><td>Values</td><td>Booleans</td></tr>
+    <tr><td>Common Use</td><td>Checking if values match</td><td>Combining multiple conditions</td></tr>
+  </table>
+
+  <h2>Combined Example</h2>
+  <pre><code>let score = 85;
+let passed = score >= 50;
+let hasCertificate = true;
+
+if (passed && hasCertificate) {
+  console.log("You passed and are certified!");
+}</code></pre>
+
+  <h2>Summary</h2>
+  <table>
+    <tr><th>Operator Type</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td>Comparison</td><td><code>a == b</code></td><td>Are a and b equal?</td></tr>
+    <tr><td>Logical</td><td><code>a && b</code></td><td>Are both a and b true?</td></tr>
+  </table>
+
+</body>
+</html>
+
+

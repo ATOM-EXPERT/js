@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date and Time Prompt</title>
+</head>
+<body>
+
+  <h1>Welcome to My Website</h1>
+
+  <script>
+    // Create a new Date object
+    const now = new Date();
+
+    // Get day name
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayName = days[now.getDay()];
+
+    // Get time in hh:mm:ss format
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const time = `${hours}:${minutes}:${seconds}`;
+
+    // Get date in yyyy-mm-dd format
+    const date = now.toISOString().split('T')[0];
+
+    // Show prompt
+    alert(`Today is ${dayName},\nDate: ${date},\nTime: ${time}`);
+
+    
+  </script>
+
+</body>
+</html>

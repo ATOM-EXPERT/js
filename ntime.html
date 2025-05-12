@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Date and Time</title>
+  <link rel="stylesheet" href="array.css">
+</head>
+<body>
+  <ul class="list">
+    <li><a href="index.html">FIRST</a></li>
+    <li><a href="array.html">ARRAY</a></li>
+    <li><a href="diff.html">DIFF</a></li>
+    <li><a href="aboutme.html">ABOUT ME</a></li>
+    <li><a href="ntime.html">TIME</a></li>
+    <li><a href="com.html">COMPARISON</a></li>
+</ul>
+
+  <h1>Welcome to My Website</h1>
+
+
+  <script>
+    
+    let today = new Date().getDay();
+
+    let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let dayName = dayNames[today];
+
+    let now = new Date();
+    let date = now.toISOString().split('T')[0];
+    let time = now.toLocaleTimeString();
+
+    
+    alert(`Today is ${dayName}\nDate: ${date}\nTime: ${time}`);
+  </script>
+
+</body>
+</html>
