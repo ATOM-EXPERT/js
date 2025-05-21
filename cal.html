@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal</title>
+</head>
+<body>
+
+    <ul class="list">
+        <li><a href="index.html">FIRST</a></li>
+        <li><a href="array.html">ARRAY</a></li>
+        <li><a href="diff.html">DIFF</a></li>
+        <li><a href="aboutme.html">ABOUT ME</a></li>
+        <li><a href="ntime.html">TIME</a></li>
+        <li><a href="com.html">COMPARISON</a></li>
+        <li><a href="sim.html">CALCULATOR</a></li>
+    </ul>
+
+<h2>INVESTMENT CALCULATOR</h2>
+<label> Amount</label> <br><br>
+<input type="number" id="amount" placeholder="amount to invest">
+<p>Interest Rate is 15%</p>
+<label>Duration</label>
+<select id="duration">
+    <option value="1">1 year</option>
+    <option value="2">2 years</option>
+    <option value="3">3 years</option>
+    <option value="4">4 years</option>
+    <option value="5">5 years</option>
+</select> <br> <br>
+<button id="but">Calculate ROI</button>
+<p id="para"></p>
+
+    <script>
+        let button= document.getElementById('but')
+        button.addEventListener('click',function(){
+            const interest= 15/100;
+            let Years= document.getElementById('duration').value;
+            let durationMonth=  Years*12
+            let invest= Number(document.getElementById('amount').value);
+            let monthlyRoi=interest*invest
+            let totalAmount= durationMonth*monthlyRoi;
+            let toWithdraw = totalAmount+invest
+            document.getElementById('para').innerHTML = `you will be withdrawing a total of ${toWithdraw} if you invest ${invest} with us for
+            ${Years} year(s)`;
+        })
+    </script>
+</body>
+</html>

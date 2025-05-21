@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal</title>
+</head>
+<body>
+<h2>LOAN CALCULATOR</h2>
+<label> Amount</label> <br><br>
+<input type="number" id="amount" placeholder="ammount to invest">
+<p>Interest Rate is 15%</p>
+<select id="duration">
+    <option value="1">1 year</option>
+    <option value="2">2 years</option>
+    <option value="3">3 years</option>
+    <option value="4">4 years</option>
+    <option value="5">5 years</option>
+</select> <br> <br>
+<button id="but">
+    to repay
+</button>
+<p id="para">you will be paying....</p>
+    <script>
+        let button= document.getElementById('but')
+        button.addEventListener('click',function(){
+            const interest=15/100
+            let Years= document.getElementById('duration').value;
+            let durationMonth=  Years*12
+            let loan= Number(document.getElementById('amount').value);
+            let totalInterest= interest*loan
+            let totamount= durationMonth*totalInterest
+            let totalAmount = totamount+loan
+            let monthlyRepayment = totalAmount/durationMonth
+            document.getElementById("para").innerHTML = `you will be
+            paying ${Math.ceil(monthlyRepayment)} monthly if you
+            borrowed ${loan} for ${Years} year(s)`
+        })
+    </script>
+</body>
+</html>
+</body>
+</html>
