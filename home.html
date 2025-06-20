@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <!--  BOOT STRAP CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body{
+            margin-top: 50px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        i{
+            font-size: 100px;
+        }
+        .one{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .par{
+            color: black;
+            font-size: 22pxpx;
+            font-weight: 400;
+            margin-right: 20px;
+        }
+        .span{
+            color: red;
+            margin-left: 10px;
+            background: black;
+            border: 1px inset blue;
+        }
+    </style>
+</head>
+<body>
+    <i class="bi bi-journal-text"></i>
+    <h1>TO DO LIST</h1>
+    <input id="ola" type="text">
+    <ul class="dog">
+
+    </ul>
+    
+
+    <button onclick="ibk()"><i style="font-size: medium;" class="bi bi-pencil-fill"></i>Add Items</button>
+    <script>
+
+        const input = document.getElementById('ola');
+
+        window.onload = () => {
+        input.focus();
+        };
+
+        input.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                ibk(); // Call the add item function
+            }
+        });
+        // // let newDiv = document.createElement('div'); // Creates a <div> element
+        // // let text = document.createTextNode("Hello, world!");
+        // // console.log(text)
+        // let div = document.createElement('div');
+        // // let text = document.createTextNode("This is a div");
+        // // div.appendChild(text); // Text is now inside the div
+        // // document.body.appendChild(div); // Div is now on the page
+
+        function ibk(){
+
+            let input= document.getElementById('ola');
+            let newItem = document.createElement('li');
+            newItem.className='one' 
+            let mypara= document.createElement('p');
+            let myspan= document.createElement('span');
+            mypara.innerHTML= input.value
+            mypara.className='par'
+            myspan.innerHTML= '	&#215;'
+            myspan.className='span'
+            myspan.onclick= deleteitem
+            newItem.appendChild(mypara);
+            newItem.appendChild(myspan);
+            // newItem.textContent = input.value;
+            let list = document.querySelector('.dog');
+            let firstItem = list.children[0];
+            list.insertBefore(newItem, firstItem);
+            input.value='';
+            input.focus(); // Keep input focused
+        };
+
+        
+        function deleteitem(){
+            this.parentElement.remove()
+        }
+
+
+
+
+        // let list = document.getElementById('myList');
+        // let allChildren = list.childNodes; // Includes text nodes (like whitespace)
+
+    </script>
+</body>
+</html>

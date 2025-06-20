@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAME</title>
+    <!-- ICON -->
+    <link rel="shortcut icon" href="name_logo.svg" type="image/x-icon">
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="name.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" style="text-align: center;">
+              <a class="nav-link active" aria-current="page" href="index.html" style="color: black; font-size: 14px;">DOCUMENTATION</a>
+              <a class="nav-link" href="about.html" style="color: black;  font-size: 14px;">ABOUT ME</a>
+              <a class="nav-link" href="ntime.html" style="color: black;  font-size: 14px;">DAY EVENT</a>
+              <a class="nav-link" href="sim.html" style="color: black;  font-size: 14px;">CALCULATOR</a>
+              <a class="nav-link" href="game.html" style="color: black;  font-size: 14px;">GUESS GAME</a>
+              <a class="nav-link" href="work.html" style="color: black;  font-size: 14px;">TASK CREATION</a>
+              <a class="nav-link" href="name.html" style="color: black;  font-size: 14px;">FORM VALIDATION</a>
+              <a class="nav-link" href="hote.html" style="color: black;  font-size: 14px;">HOTEL</a>
+              <a class="nav-link" href="ride.html" style="color: black;  font-size: 14px;">RIDE</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br>
+    <section class="menu">
+        <img src="name_logo.svg" alt="logo" width="100">
+
+        <div class="submenu"> 
+            <h5  style="margin-left: 10px;"><a href="#">Get Started</a></h5>
+            <h5  style="margin-left: 15px;"><a href="#">Pro Solutions</a></h5>
+            <h5  style="margin-left: 15px;"><a href="#">Support</a></h5>
+        </div>
+
+        <div class="submenu">
+            <a href="#"  style="margin-left: 15px;">Login</a>
+            <i class="bi bi-suit-heart"  style="margin-left: 15px;"></i>
+            <i class="bi bi-cart2"  style="margin-left: 15px;"></i>
+        </div>
+    </section>
+
+    <div>
+        <h1>Create your account.</h1>
+        <p>Have an account <a href="#">Login</a></p>
+    </div>    
+    <section class="name">
+      
+        <div>
+            <form id="registrationForm">
+                <h2>Account Details</h2>
+                <div>
+                    <label for="email"> Enter your Email</label><br>
+                    <input id="email">
+                    <p id="emailError"></p>
+                </div><br>
+                <div>
+                    <label for="username">Create a username</label><br>
+                    <input id="username" >
+                    <p id="usernameError"></p>
+                </div><br>
+                <div>
+                    <label for="password">Password:</label><br>
+                     <input id="password" >
+                     <p id="passwordError"></p>
+                </div><br>
+                <div>
+                    <button>Create my account</button>
+                </div> <br>
+            </form>
+        </div>
+
+        <div>
+            <img src="name.jpg" alt="">
+        </div>
+    </section>
+
+    
+    <script>
+        let usernameformat= /^[a-zA-Z\s]+$/
+        let emailformat= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        let passwordformat= /^(?=.*[!@#$%^&(),.?":{}|<>])(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d!@#$%^&(),.?":{}|<>]{5,15}$/
+
+        let myform= document.getElementById('registrationForm')        
+        function Validate(e){
+            e.preventDefault()
+            let myuseremail= document.getElementById('email').value;
+            let myusername= document.getElementById('username').value;
+            let myuserpassword= document.getElementById('password').value;
+
+            emailError.innerHTML = '';
+            usernameError.innerHTML = '';
+            passwordError.innerHTML = '';
+
+            let Ola= true;
+            if(!(myuseremail.match(emailformat))){
+                emailError.innerHTML='Invalid email'
+                Ola= false;
+            }
+
+            if(!(myusername.match(usernameformat))){
+                usernameError.innerHTML='Invalid Username'
+                Ola= false;
+            }
+            if(!(myuserpassword.match(passwordformat))){
+                passwordError.innerHTML='must be btw 5&15 characters, and must contain Uppercase, lowwer case and a special character'
+                Ola= false;
+            }
+
+            if(Ola){
+                myform.submit()
+            }
+           
+        }
+        myform.addEventListener('submit', (e)=>Validate(e))
+    </script>
+    <script>
+        // function dav(){
+        //     let thegirls= document.getElementsByClassName('girl');
+        //     thegirls[0].style.background ='red';
+        // }
+    
+        // let profile={
+        //     firstname: 'sanny',
+        //     lastname: 'dauda',
+        //     fullname: function(){
+        //         return this.firstname + " " +this.lastname
+        //     }
+        // }
+        // console.log(profile.fullname())
+               let myinput;
+        function david (){
+            myinput= document.getElementById('anything').value;
+            let mylist = document.createElement('li');
+            let thecontent = document.createTextNode(myinput);
+    
+            if(!myinput== ''){
+                mylist.appendChild(thecontent);
+                let myspan= document.createElement('span');
+                let spancontent=document.createTextNode('\u0058');
+                myspan.className='mystuff';
+                myspan.style.background='red';
+                myspan.style.color='white';
+                myspan.style.cursor='pointer';
+                myspan.title='delete';
+                myspan.appendChild(spancontent);
+                mylist.appendChild(myspan);
+                // mylist.innerHTML= 'water';
+                let listbody= document.getElementById('plusone');
+                listbody.insertBefore(mylist, listbody.childNodes[1]);
+                document.body.appendChild(mylist);
+                document.getElementById('anything').value='';
+                document.getElementById('anything').focus();
+            }
+            
+    
+            let y= document.getElementsByClassName('mystuff');
+            let i;
+            for(i=0; i<y.length;  i++){
+                y[i].onclick= function(){
+                    let confirmdelete= confirm('are you sure you want to delete that?')
+                    if(confirmdelete){
+                         this.parentNode.style.display='none'
+                    }
+                    
+                }
+            }
+        }
+        let ebube= function(){
+            if(!(myinput=='')){
+                david()
+            }
+        }
+        let myaddbtn= document.querySelector(".createbtn")
+        myaddbtn.addEventListener('click', function(){
+            if(!(myinput== '')){
+                david()
+            }
+        })
+        document.addEventListener('keyup', (x)=>{
+            if(x.key==='Enter'){
+                david()
+            }
+    
+        })
+    </script>
+      <!-- BOOTSTRAP JS CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBJECT</title>
+</head>
+<body>
+    <h1>SUBJECT SELECTION</h1>
+    <h3>Available Subject</h3>
+    <table>
+      <tr>
+        <th>Subject</th><th>Selected</th>
+      </tr>
+      <tr>
+        <td class="display">English</td><td><input type="checkbox" value="English" onclick="remove()"></td></tr>
+      </tr>
+      <tr>
+        <td  id="display">Mathematics</td><td><input type="checkbox" value="Mathematics" onclick="remove()"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Physics</td><td><input type="checkbox" value="Physics" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Chemistry</td><td><input type="checkbox" value="Chemistry" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Biology</td><td><input type="checkbox" value="Biology" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Economics</td><td><input type="checkbox" value="Economics" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Geography</td><td><input type="checkbox" value="Geography" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Agric</td><td><input type="checkbox" value="Agric" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Civic</td><td><input type="checkbox" value="Civic" onclick="remove()" class="remove"></td></tr>
+      </tr>
+      <tr>
+        <td  class="display">Yoruba</td><td><input type="checkbox" value="Yoruba" onclick="remove()" class="remove"></td></tr>
+      </tr>
+    </table>
+
+    <script>
+      
+      function remove(){
+        let dis= document.querySelector('td')
+        dis.style.display='none'
+      }
+      // function ibk(){
+
+      // let input= document.getElementById('ola');
+      // let newItem = document.createElement('li');
+      // newItem.className='one' 
+      // let mypara= document.createElement('p');
+      // let myspan= document.createElement('span');
+      // mypara.innerHTML= input.value
+      // mypara.className='par'
+      // myspan.innerHTML= '	&#215;'
+      // myspan.className='span'
+      // myspan.onclick= deleteitem
+      // newItem.appendChild(mypara);
+      // newItem.appendChild(myspan);
+      // // newItem.textContent = input.value;
+      // let list = document.querySelector('.dog');
+      // let firstItem = list.children[0];
+      // list.insertBefore(newItem, firstItem);
+      // input.value='';
+      // input.focus(); // Keep input focused
+      // };
+
+
+      // function deleteitem(){
+      // this.parentElement.remove()
+      // }
+    </script>
+</body>
+</html>

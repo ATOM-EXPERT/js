@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subject Selector & Shopping List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .shopping-item {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .shopping-item span {
+      font-weight: bold;
+    }
+    .item-delete {
+      background-color: red;
+      color: white;
+      margin-left: 10px;
+      cursor: pointer;
+      padding: 2px 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SUBJECT SELECTION</h1>
+  <div class="container">
+    <div>
+      <h3>Available Subjects</h3>
+      <table>
+        <tr><th>Subject</th><th>Select</th></tr>
+        <tr><td>English</td><td><input type="checkbox" value="English"></td></tr>
+        <tr><td>Mathematics</td><td><input type="checkbox" value="Mathematics"></td></tr>
+        <tr><td>Civics</td><td><input type="checkbox" value="Civics"></td></tr>
+        <tr><td>Economics</td><td><input type="checkbox" value="Economics"></td></tr>
+        <tr><td>Yoruba</td><td><input type="checkbox" value="Yoruba"></td></tr>
+        <tr><td>Marketing</td><td><input type="checkbox" value="Marketing"></td></tr>
+        <tr><td>Biology</td><td><input type="checkbox" value="Biology"></td></tr>
+      </table>
+      <button onclick="addSelectedSubjects()">Add Selected</button>
+    </div>
+
+    <div>
+      <h3>Selected Subjects</h3>
+      <table id="selectedSubjects">
+        <tr><th>Selected</th><th>Delete</th></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- <h2>Shopping List</h2>
+  <input type="text" id="itemInput" placeholder="Enter item">
+  <button onclick="addItem()">Add Item</button>
+  <div id="shoppingList"></div> -->
+
+  <script>
+    function addSelectedSubjects() {
+      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      const selectedTable = document.getElementById('selectedSubjects');
+
+      checkboxes.forEach(cb => {
+        const row = document.createElement('tr');
+        const subjectCell = document.createElement('td');
+        subjectCell.textContent = cb.value;
+
+        const deleteCell = document.createElement('td');
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'X';
+        delBtn.className = 'delete-btn';
+        delBtn.onclick = function() {
+          this.parentNode.parentNode.remove();
+        };
+        deleteCell.appendChild(delBtn);
+
+        row.appendChild(subjectCell);
+        row.appendChild(deleteCell);
+        selectedTable.appendChild(row);
+
+        cb.checked = false;
+      });
+    }
+
+    // function addItem() {
+    //   const input = document.getElementById('itemInput');
+    //   const value = input.value.trim();
+    //   if (!value) return;
+
+    //   const container = document.getElementById('shoppingList');
+
+    //   const itemDiv = document.createElement('div');
+    //   itemDiv.className = 'shopping-item';
+
+    //   const span = document.createElement('span');
+    //   span.textContent = value;
+
+    //   const delBtn = document.createElement('button');
+    //   delBtn.textContent = 'x';
+    //   delBtn.className = 'item-delete';
+    //   delBtn.onclick = function() {
+    //     this.parentNode.remove();
+    //   };
+
+    //   itemDiv.appendChild(span);
+    //   itemDiv.appendChild(delBtn);
+    //   container.appendChild(itemDiv);
+
+    //   input.value = '';
+    // }
+  </script>
+</body>
+</html>

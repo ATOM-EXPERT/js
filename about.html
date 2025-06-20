@@ -3,14 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT</title>
+    <title>About Me Toggle</title>
+    <style>
+        .about{
+            background: gray;
+        }
+        .hidden {
+            display: none;
+        }
+        .list {
+            list-style: none;
+            padding: 0;
+        }
+        .list li {
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+     <!-- BOOTSTRAP CDN -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
-    
-    <p>This is Atom_Expert</p>
-    <button>Read More </button>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" style="text-align: center;">
+              <a class="nav-link active" aria-current="page" href="index.html" style="color: black; font-size: 14px;">DOCUMENTATION</a>
+              <a class="nav-link" href="about.html" style="color: black;  font-size: 14px;">ABOUT ME</a>
+              <a class="nav-link" href="ntime.html" style="color: black;  font-size: 14px;">DAY EVENT</a>
+              <a class="nav-link" href="sim.html" style="color: black;  font-size: 14px;">CALCULATOR</a>
+              <a class="nav-link" href="game.html" style="color: black;  font-size: 14px;">GUESS GAME</a>
+              <a class="nav-link" href="work.html" style="color: black;  font-size: 14px;">TASK CREATION</a>
+              <a class="nav-link" href="name.html" style="color: black;  font-size: 14px;">FORM VALIDATION</a>
+              <a class="nav-link" href="hote.html" style="color: black;  font-size: 14px;">HOTEL</a>
+              <a class="nav-link" href="ride.html" style="color: black;  font-size: 14px;">RIDE</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br>
+      
+    <div class="about">            
+        <p>Hello, I am Atomboi</p>
+
+        <div id="moreInfo" class="hidden">
+            <p>
+                I am 25 years old, dark in complexion, from Oyo State, hometown Ogomosho.
+                I studied at Poly Ibadan, I'm 6ft tall, born in Ibadan, a student, a citizen of Nigeria,i love travelling, eating and hiking,
+                my future ambition is to be a software developer.
+            </p>
+        </div>
+    </div>
+
+    <button id="toggleBtn">Know More</button>
+
     <script>
-        
+        const toggleBtn = document.getElementById('toggleBtn');
+        const moreInfo = document.getElementById('moreInfo');
+
+        toggleBtn.addEventListener('click', () => {
+            moreInfo.classList.toggle('hidden');
+            toggleBtn.textContent = moreInfo.classList.contains('hidden') ? 'Know More' : 'See Less';
+        });
     </script>
+      <!-- BOOTSTRAP JS CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="hote.css">
+         <!-- BOOTSTRAP CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    </head>
+<body>
+    <Marquee style="color: white; font-size: 30px; font-family: Arial; font-weight: bold;">WELCOME TO ATOM_EXPERT HOTEL, YOU HOME AWAY FROM HOME</Marquee>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" style="text-align: center;">
+              <a class="nav-link active" aria-current="page" href="index.html" style="color: black; font-size: 14px;">DOCUMENTATION</a>
+              <a class="nav-link" href="about.html" style="color: black;  font-size: 14px;">ABOUT ME</a>
+              <a class="nav-link" href="ntime.html" style="color: black;  font-size: 14px;">DAY EVENT</a>
+              <a class="nav-link" href="sim.html" style="color: black;  font-size: 14px;">CALCULATOR</a>
+              <a class="nav-link" href="game.html" style="color: black;  font-size: 14px;">GUESS GAME</a>
+              <a class="nav-link" href="work.html" style="color: black;  font-size: 14px;">TASK CREATION</a>
+              <a class="nav-link" href="name.html" style="color: black;  font-size: 14px;">FORM VALIDATION</a>
+              <a class="nav-link" href="hote.html" style="color: black;  font-size: 14px;">HOTEL</a>
+              <a class="nav-link" href="ride.html" style="color: black;  font-size: 14px;">RIDE</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br>
+    <!-- Loader Container -->
+    <div id="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- WELCOME PAGE  -->
+   <div id="welcome">
+        <h1 style="text-align: center;"> Welcome to ATOM_EXPERT HOTEL</h1>
+        <h2 style="text-align: center;">Your Home Away From Home</h2>
+        <p>
+            Whether you're here for business, pleasure, or a little of both, we’re delighted to have you. <br>
+            At <span style="font-weight: bold; font-style: italic;"> ATOM_EXPERT Hotel</span>, we offer a perfect blend of comfort, elegance, and personalized service to make your stay truly unforgettable. <br>Nestled in the heart of <span style="font-weight: bold; font-style: italic;">Ibadan/Mokola</span>, our hotel is just minutes away from top attractions, shopping, and cultural landmarks.
+        </p>
+        <div style="display: flex;  justify-content: center;">
+            <button style="background-color: yellow; font-family: Arial, Helvetica, sans-serif; border: none; padding: 15px 200px; border-radius: 5px;" onclick="welcome()"> BOOK NOW</button>
+        </div>
+   </div>
+
+   <!-- BOOKING PAGE -->
+   <div id="book">
+        <div id="booking">
+            <h1>Welcome</h1>
+            <p>Please provide your details</p>
+            <form id="registrationForm" >
+                
+                <div>
+                    <label for="username">Full Name</label><br>
+                    <input id="username" placeholder="Please Enter your Full Name">
+                    <p id="usernameError"></p>
+                </div><br>
+    
+                
+                <div>
+                    <label for="email"> Enter your Email</label><br>
+                    <input id="email" placeholder="Please Enter your Email">
+                    <p id="emailError"></p>
+                </div><br>
+                
+                <div>
+                    <label for="phone">Phone Number</label><br>
+                    <input id="tel" placeholder="Please Enter your Tell.No">
+                    <p id="telError"></p>
+                </div>               
+                <button style="background-color: yellow; font-family: Arial, Helvetica, sans-serif; border: none; padding: 10px; border-radius: 5px;">NEXT</button>
+            </form>
+        </div>
+   </div>
+
+   <!-- ACCOMODATION PAGE -->
+   <div id="acc">
+        <div id="accommodation-page" style="display: none;">
+            <h1 id="accomodation"></h1>
+            <input type="number" id="days" placeholder="Enter number of days" style="padding: 10px; border-radius: 5px; margin: 20px 0; "><br>
+            <select id="room">
+                <option value="Regular">Regular - #5,000</option>
+                <option value="Standard">Standard - #7,000</option>
+                <option value="Classic">Classic - #10,000 </option>
+                <option value="Exclusive">Exclusive - #20,000</option>
+                <option value="Presidential Suite">Presidential Suite - #45,000</option>
+            </select> <br> <br>
+            <button onclick="submitDays()" style="padding: 10px 30px; background-color: yellow; border: none; border-radius: 5px;">Submit</button>
+        </div>
+   </div>
+
+    <!-- CONFIRMATION PAGE -->
+    <div id="confirmation-page" style="display: none; text-align: center; font-family: Arial; color: white;">
+        <h1>Booking Confirmation</h1>
+        <p id="confirm-details"></p>
+        <button onclick="confirmBooking()" style="padding: 10px 20px; background-color: green; border: none; color: white; border-radius: 5px;">Continue</button>
+        <button onclick="cancelBooking()" style="padding: 10px 20px; background-color: red; border: none; color: white; border-radius: 5px;">Cancel</button>
+    </div>
+
+    <!-- THANKYOU PAGE -->
+    <div id="thankyou-page" style="display: none; text-align: center;">
+        <h1>Thank You for Booking!</h1>
+        <p id="summary"></p>
+    </div>
+
+    <script>
+        // LOAD ANIMATION
+        window.addEventListener('load', function() {
+          const loader = document.getElementById('loader-wrapper');
+          loader.style.display = 'none'; // hide the loader after page loads
+          document.getElementById('booking').style.display='none'
+        });
+
+        // WELCOME PAGE
+        function welcome(){
+            document.getElementById('welcome').style.display='none'
+            document.getElementById('booking').style.display='inline-block'
+        }
+
+        // BOOKING PAGE
+        
+        let usernameformat= /^[a-zA-Z\s]+$/
+        let emailformat= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        let telformat= /^(?:\+234|234|0)[789][01]\d{8}$/
+
+        let myform= document.getElementById('registrationForm')        
+        function Validate(e){
+            e.preventDefault()
+            let myusername= document.getElementById('username').value;
+            let myuseremail= document.getElementById('email').value;
+            let myusertel= document.getElementById('tel').value;
+
+            emailError.innerHTML = '';
+            usernameError.innerHTML = '';
+            telError.innerHTML = '';
+
+            let Ola= true;
+
+            if(!(myusername.match(usernameformat))){
+                usernameError.innerHTML='Invalid Username'
+                usernameError.style.color='red'
+                Ola= false;
+            }
+            if(!(myuseremail.match(emailformat))){
+                emailError.innerHTML='Invalid email'
+                emailError.style.color='red'
+                Ola= false;
+            }
+
+            if(!(myusertel.match(telformat))){
+                telError.innerHTML='Input a valid Phone Number'
+                telError.style.color='red'
+                Ola= false;
+            }
+
+            if(Ola){
+                showAccommodationPage(myusername);
+            }
+           
+        }
+        myform.addEventListener('submit', (e)=>Validate(e))
+
+        // ACCOMODATION PAGE
+        
+        // function accomodation(){
+        //     document.getElementById('book').style.display = 'none';
+        //     // document.getElementById('accommodation-page').style.display = 'flex';
+        //     document.getElementById('accomodation').innerHTML = `Welcome, <strong>${username}</strong>!<br>How many days will you be staying with us?`;
+
+        // }
+        function showAccommodationPage(username) {
+            document.getElementById('book').style.display = 'none';
+            document.getElementById('accommodation-page').style.display = 'inline-block';
+            document.getElementById('accomodation').innerHTML = `Welcome, <strong>${username}</strong>!<br> <br>How many days will you be staying with us?`;
+
+            // STORE USERNAME IF NEEDED LATER
+            sessionStorage.setItem('guestName', username);
+        }
+
+        // CALCULATION PAGE
+        // function submitDays() {
+        //     const days = parseInt(document.getElementById('days').value);
+        //     const roomType = document.getElementById('room').value;
+        //     const name = sessionStorage.getItem('guestName');
+
+        //     if (!roomType || isNaN(days) || days <= 0) {
+        //         alert('Please select a valid room and enter number of days.');
+        //         return;
+        //     }
+
+        //     const prices = {
+        //         'Regular': 5000,
+        //         'Standard': 7000,
+        //         'Classic': 10000,
+        //         'Exclusive': 20000,
+        //         'Presidential Suite': 45000
+        //     };
+
+        //     const totalCost = days * prices[roomType];
+
+        //     document.getElementById('accommodation-page').style.display = 'none';
+        //     document.getElementById('thankyou-page').style.display = 'inline-block';
+        //     document.getElementById('summary').innerHTML =
+        //         `<strong>${name}</strong>, you selected the <strong>${roomType}</strong> for <strong>${days}</strong> day(s).<br>Total Amount: <strong>₦${totalCost.toLocaleString()}</strong>`;
+        // }
+        
+        function submitDays() {
+            const days = parseInt(document.getElementById('days').value);
+            const roomType = document.getElementById('room').value;
+            const name = sessionStorage.getItem('guestName');
+
+            if (!roomType || isNaN(days) || days <= 0) {
+                alert('Please select a valid room and enter number of days.');
+                return;
+            }
+
+            const prices = {
+                'Regular': 5000,
+                'Standard': 7000,
+                'Classic': 10000,
+                'Exclusive': 20000,
+                'Presidential Suite': 45000
+            };
+
+            const totalCost = days * prices[roomType];
+
+            // Store booking info
+            sessionStorage.setItem('roomType', roomType);
+            sessionStorage.setItem('days', days);
+            sessionStorage.setItem('totalCost', totalCost);
+
+            document.getElementById('accommodation-page').style.display = 'none';
+            document.getElementById('confirmation-page').style.display = 'block';
+            document.getElementById('confirm-details').innerHTML =
+                `<strong>${name}</strong>, you selected the <strong>${roomType}</strong> room at <strong>₦${prices[roomType].toLocaleString()}</strong> per night for <strong>${days}</strong> day(s).<br>
+                Total Amount: <strong>₦${totalCost.toLocaleString()}</strong><br><br>
+                Do you want to continue?`;
+        }
+        function cancelBooking() {
+            sessionStorage.clear(); // Clear all session data
+            location.reload(); // Reloads the home page
+        }
+
+        function confirmBooking() {
+            const name = sessionStorage.getItem('guestName');
+            const roomType = sessionStorage.getItem('roomType');
+            const days = parseInt(sessionStorage.getItem('days'));
+            const totalCost = parseInt(sessionStorage.getItem('totalCost'));
+
+            document.getElementById('confirmation-page').style.display = 'none';
+            document.getElementById('thankyou-page').style.display = 'block';
+            document.getElementById('summary').innerHTML =
+                `<strong>${name}</strong>, you selected the <strong>${roomType}</strong> for <strong>${days}</strong> day(s).<br>Total Amount: <strong>₦${totalCost.toLocaleString()}</strong><br>
+                <p>Time remaining in your stay: <span id="countdown"></span></p>`;
+
+                startCountdown(days);
+            }
+
+                function startCountdown(days) {
+                    const endTime = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
+
+                    const timer = setInterval(function() {
+                        const now = new Date().getTime();
+                        const distance = endTime - now;
+
+                        if (distance <= 0) {
+                            clearInterval(timer);
+                            document.getElementById("countdown").innerText = "Your stay has ended.";
+                            return;
+                }
+
+                            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            document.getElementById("countdown").innerText = `${d}d ${h}h ${m}m ${s}s`;
+                    }, 1000);
+        }
+
+    </script>
+    <script>
+        // function dav(){
+        //     let thegirls= document.getElementsByClassName('girl');
+        //     thegirls[0].style.background ='red';
+        // }
+    
+        // let profile={
+        //     firstname: 'sanny',
+        //     lastname: 'dauda',
+        //     fullname: function(){
+        //         return this.firstname + " " +this.lastname
+        //     }
+        // }
+        // console.log(profile.fullname())
+               let myinput;
+        function david (){
+            myinput= document.getElementById('anything').value;
+            let mylist = document.createElement('li');
+            let thecontent = document.createTextNode(myinput);
+    
+            if(!myinput== ''){
+                mylist.appendChild(thecontent);
+                let myspan= document.createElement('span');
+                let spancontent=document.createTextNode('\u0058');
+                myspan.className='mystuff';
+                myspan.style.background='red';
+                myspan.style.color='white';
+                myspan.style.cursor='pointer';
+                myspan.title='delete';
+                myspan.appendChild(spancontent);
+                mylist.appendChild(myspan);
+                // mylist.innerHTML= 'water';
+                let listbody= document.getElementById('plusone');
+                listbody.insertBefore(mylist, listbody.childNodes[1]);
+                document.body.appendChild(mylist);
+                document.getElementById('anything').value='';
+                document.getElementById('anything').focus();
+            }
+            
+    
+            let y= document.getElementsByClassName('mystuff');
+            let i;
+            for(i=0; i<y.length;  i++){
+                y[i].onclick= function(){
+                    let confirmdelete= confirm('are you sure you want to delete that?')
+                    if(confirmdelete){
+                         this.parentNode.style.display='none'
+                    }
+                    
+                }
+            }
+        }
+        let ebube= function(){
+            if(!(myinput=='')){
+                david()
+            }
+        }
+        let myaddbtn= document.querySelector(".createbtn")
+        myaddbtn.addEventListener('click', function(){
+            if(!(myinput== '')){
+                david()
+            }
+        })
+        document.addEventListener('keyup', (x)=>{
+            if(x.key==='Enter'){
+                david()
+            }
+    
+        })
+    </script>
+      <!-- BOOTSTRAP JS CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -17,34 +17,48 @@
         <li><a href="sim.html">CALCULATOR</a></li>
     </ul>
 
+    <p>
+        Hello, I am Atomboi
+    </p>
+    <button id="reveal">Know More</button>
+    <button value="modebtn" onclick="trans()">See less</button>
+    <!-- <button value="modebtn" onclick="trans()">Reveal</button> -->
 
     <script>
-        let person={
-                 thename: 'Olamide',
-                 age: 25,
-                 complexion:'dark',
-                 state: 'Oyo',
-                 Hometown:'Ogomosho',
-                 School:'Poly Ibadan',
-                 Height:'7.2ft',
-                 placeofbirth:'Ibadan',
-                 status:'Student',
-                 Nationality:'Nigerian',
-                 Hobbies: 'Travelling',
-                 Ambition: 'Aspiring Software developer'
+
+    function trans(){
+                let modebtn=document.getElementById('#reveal');
+            modebtn.addEventListener('click', function(){
+                let mybody=document.querySelector('p')
+                myp.classList.toggle('reveal');
+                modebtn.textContent=myp.classList.contains('reveal')? 'p' :'reveal';
+            })
             }
-            alert(`My name is: ${person.thename},
-            I am  ${person.age} years old,
-            I am  ${person.complexion} in complexion,
-            I am from ${person.state} State,
-            My Hometown is ${person.Hometown}, 
-            The name of my school is ${person.School}, 
-            I am  ${person.Height} Tall, 
-            I am born in   ${person.placeofbirth}, 
-            I am  ${person.status}, 
-            My Nationality is ${person.Nationality}, 
-            I love ${person.Hobbies},
-            My future ambition is to be ${person.Ambition}`);
-    </script>
-</body>
+        // let person={
+        //          thename: 'Olamide',
+        //          age: 25,
+        //          complexion:'dark',
+        //          state: 'Oyo',
+        //          Hometown:'Ogomosho',
+        //          School:'Poly Ibadan',
+        //          Height:'7.2ft',
+        //          placeofbirth:'Ibadan',
+        //          status:'Student',
+        //          Nationality:'Nigerian',
+        //          Hobbies: 'Travelling',
+        //          Ambition: 'Aspiring Software developer'
+        //     }
+        //     alert(`My name is: ${person.thename},
+        //     I am  ${person.age} years old,
+        //     I am  ${person.complexion} in complexion,
+        //     I am from ${person.state} State,
+        //     My Hometown is ${person.Hometown}, 
+        //     The name of my school is ${person.School}, 
+        //     I am  ${person.Height} Tall, 
+        //     I am born in   ${person.placeofbirth}, 
+        //     I am  ${person.status}, 
+        //     My Nationality is ${person.Nationality}, 
+        //     I love ${person.Hobbies},
+        //     My future ambition is to be ${person.Ambition}`);
+    </script> 
 </html>

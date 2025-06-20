@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RIDE</title>
+  <link rel="stylesheet" href="ride.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+  <style>
+    #ride{
+      justify-self: center;
+      border-radius: 20px;
+      background: black;
+      color: white;
+      text-align: center;
+    }
+    #confirmride{
+      justify-self: center;
+      border-radius: 20px;
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 50px;
+      margin: 100px;
+      margin-left: 25%;
+      margin-right: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      text-align: center;
+    }
+    .ride-progress {
+      background-color: #28a745;
+      padding: 60px 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      display: none;
+      height: 400px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .fare-summary {
+      display: none;
+      max-width: 500px;
+      margin: auto;
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .fare-summary table {
+      margin-top: 20px;
+    }
+  </style>
+   <!-- BOOTSTRAP CDN -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav" style="text-align: center;">
+          <a class="nav-link active" aria-current="page" href="index.html" style="color: black; font-size: 14px;">DOCUMENTATION</a>
+          <a class="nav-link" href="about.html" style="color: black;  font-size: 14px;">ABOUT ME</a>
+          <a class="nav-link" href="ntime.html" style="color: black;  font-size: 14px;">DAY EVENT</a>
+          <a class="nav-link" href="sim.html" style="color: black;  font-size: 14px;">CALCULATOR</a>
+          <a class="nav-link" href="game.html" style="color: black;  font-size: 14px;">GUESS GAME</a>
+          <a class="nav-link" href="work.html" style="color: black;  font-size: 14px;">TASK CREATION</a>
+          <a class="nav-link" href="name.html" style="color: black;  font-size: 14px;">FORM VALIDATION</a>
+          <a class="nav-link" href="hote.html" style="color: black;  font-size: 14px;">HOTEL</a>
+          <a class="nav-link" href="ride.html" style="color: black;  font-size: 14px;">RIDE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+    <!-- RIDE FORM -->
+    <div id="ride">
+      <h1>ATOM_EXPERT RIDE</h1>
+      <form id="registrationForm">
+        <label>Pick Up Location</label><br>
+        <input type="text" id="pick" placeholder="Please provide Pick Up Location"><br>
+        <p id="pickerror" class="text-danger"></p><br>
+
+        <label>Drop Off Location</label><br>
+        <input type="text" id="drop" placeholder="Please provide Drop Off Location"><br>
+        <p id="droperror" class="text-danger"></p><br>
+
+        <button id="book" class="btn btn-primary">BOOK RIDE</button>
+      </form>
+    </div>
+
+    <!-- RIDE CONFIRMATION -->
+    <div id="confirmride" style="display: none;">
+      <h1>ATOM_EXPERT RIDE</h1>
+      <p id="rideInfo"></p>
+      <button onclick="cancelRide()" class="btn btn-danger">Cancel Ride</button>
+      <button onclick="confirmRide()" class="btn btn-success">Confirm Ride</button>
+    </div>
+
+    <!-- RIDE PROGRESS -->
+    <div id="rideInProgress" class="ride-progress">
+      <h1 id="rideTimer" class="display-3">00:00</h1>
+      <p id="rideStatus" class="lead">Ride in progress...</p> <br>
+      <div>
+        <button id="pauseBtn" class="btn btn-dark px-4">Pause</button>
+        <button id="stopBtn" class="btn btn-danger px-4">Stop Ride</button>
+      </div>
+    </div>
+
+    <!-- FARE SUMMARY -->
+    <div id="fareSummary" class="fare-summary">
+      <h2 class="text-success">Ride has Ended</h2>
+      <p><strong>Total Time:</strong> <span id="finalTime"></span></p>
+      <table class="table table-bordered">
+        <tr><td>Base Fare</td><td>₦<span id="baseFare">1500</span></td></tr>
+        <tr><td>Time Fare</td><td>₦<span id="timeFare">0</span></td></tr>
+        <tr><td>Initial Total</td><td>₦<span id="initialTotal">0</span></td></tr>
+        <tr><td>Tax (20%)</td><td>₦<span id="tax">0</span></td></tr>
+        <tr><th>Total Amount</th><th>₦<span id="totalAmount">0</span></th></tr>
+      </table>
+      <button id="payBtn" class="btn btn-success">Make Payment</button>
+    </div>
+
+    <script>
+              // document.getElementById('book').addEventListener('click', function(e){
+        //                 e.preventDefault();
+        //                 let pickup= document.getElementById('pick').value;
+        //                 let dropoff= document.getElementById('drop').value;
+
+        //                 let Ola= true
+
+        //                 if(pickup==""){
+        //                     document.getElementById('pickerror').innerHTML='input pick up Destination'
+        //                     document.getElementById('pickerror').style.color='red'
+        //                     Ola=false;
+        //                 }
+        //                 if(dropoff==""){
+        //                     document.getElementById('droperror').innerHTML='input pick up Destination'
+        //                     document.getElementById('droperror').style.color='red'
+        //                     Ola= false;
+        //                 }
+        //                 if(Ola){
+        //                     document.getElementById('ride').style.display='none'
+        //                     document.getElementById('confirmride').style.display='inline-block'
+        //                     document.getElementById('rideInfo').innerHTML=`You are requesting a ride from ${pickup} to ${dropoff}, please confirm your ride.`
+        //                 }
+        //             })
+
+        //                 function book(){
+        //                     document.getElementById('registrationForm').style.display='none'
+        //                     document.getElementById('confirmride').style.display='inline-block'
+        //                 }
+        //                 function cancelRide(){
+        //                     document.getElementById('ride').style.display = 'inline-block';
+        //                     document.getElementById('confirmride').style.display = 'none';
+        //                     document.getElementById('registrationForm').reset();
+        //                     document.getElementById('rideInfo').textContent = "";
+        //                 }
+        //                 function confirmRide() {
+        //                 document.getElementById('confirmride').style.display = 'none';
+        //                 document.getElementById('rideInProgress').style.display = 'flex';
+        //                 document.getElementById('rideStatus').textContent = `Ride in progress... You are now moving from ${pickup} to ${dropoff}.`;
+
+        //               // Start timer
+        //     seconds = 0;
+        //     isPaused = false;
+        //     document.getElementById('rideTimer').textContent = formatTime(seconds);
+
+        //     interval = setInterval(() => {
+        //       if (!isPaused) {
+        //         seconds++;
+        //         document.getElementById('rideTimer').textContent = formatTime(seconds);
+        //       }
+        //     }, 1000);
+        //   }
+
+        //   // Timer formatting
+        //   function formatTime(sec) {
+        //     const minutes = Math.floor(sec / 60).toString().padStart(2, '0');
+        //     const seconds = (sec % 60).toString().padStart(2, '0');
+        //     return `${minutes}:${seconds}`;
+        //   }
+
+        //   // Pause Ride button
+        //   document.getElementById('pauseBtn').addEventListener('click', function () {
+        //     isPaused = !isPaused;
+        //     this.textContent = isPaused ? 'Resume' : 'Pause';
+        //   });
+
+        //   // Stop Ride button
+        //   document.getElementById('stopBtn').addEventListener('click', function () {
+        //     clearInterval(interval);
+        //     alert(`Ride Stopped. Total Time: ${formatTime(seconds)}`);
+        //     location.reload(); // Reset the page
+        //   });
+
+      // Global variables
+      let pickup = "";
+      let dropoff = "";
+      let seconds = 0;
+      let interval = null;
+      let isPaused = false;
+
+      // Booking form logic
+      document.getElementById('book').addEventListener('click', function(e){
+        e.preventDefault();
+        pickup = document.getElementById('pick').value.trim();
+        dropoff = document.getElementById('drop').value.trim();
+        let isValid = true;
+
+        // Clear errors
+        document.getElementById('pickerror').textContent = "";
+        document.getElementById('droperror').textContent = "";
+
+        if (pickup === "") {
+          document.getElementById('pickerror').textContent = 'Input pick up destination';
+          isValid = false;
+        }
+
+        if (dropoff === "") {
+          document.getElementById('droperror').textContent = 'Input drop off destination';
+          isValid = false;
+        }
+
+        if (isValid) {
+          document.getElementById('ride').style.display = 'none';
+          document.getElementById('confirmride').style.display = 'inline-block';
+          document.getElementById('rideInfo').innerHTML = `You are requesting a ride from ${pickup} to ${dropoff}, please confirm your ride.`;
+        }
+      });
+
+      function cancelRide() {
+        document.getElementById('ride').style.display = 'inline-block';
+        document.getElementById('confirmride').style.display = 'none';
+        document.getElementById('registrationForm').reset();
+        document.getElementById('rideInfo').textContent = "";
+      }
+
+      function confirmRide() {
+        document.getElementById('confirmride').style.display = 'none';
+        document.getElementById('rideInProgress').style.display = 'flex';
+        document.getElementById('rideStatus').textContent = `Ride in progress... You are now moving from ${pickup} to ${dropoff}.`;
+
+        // Start timer
+        seconds = 0;
+        isPaused = false;
+        document.getElementById('rideTimer').textContent = formatTime(seconds);
+
+        interval = setInterval(() => {
+          if (!isPaused) {
+            seconds++;
+            document.getElementById('rideTimer').textContent = formatTime(seconds);
+          }
+        }, 1000);
+      }
+
+      function formatTime(sec) {
+        const minutes = Math.floor(sec / 60).toString().padStart(2, '0');
+        const seconds = (sec % 60).toString().padStart(2, '0');
+        return `${minutes}:${seconds}`;
+      }
+
+      document.getElementById('pauseBtn').addEventListener('click', function () {
+        isPaused = !isPaused;
+        this.textContent = isPaused ? 'Resume' : 'Pause';
+      });
+
+      document.getElementById('stopBtn').addEventListener('click', function () {
+        clearInterval(interval);
+
+        const baseFare = 1500;
+        const timeFare = seconds * 5;
+        const initialTotal = baseFare + timeFare;
+        const tax = Math.round(initialTotal * 0.2);
+        const totalAmount = initialTotal + tax;
+
+        // Hide progress, show fare summary
+        document.getElementById('rideInProgress').style.display = 'none';
+        document.getElementById('fareSummary').style.display = 'block';
+
+        // Update fare info
+        document.getElementById('finalTime').textContent = formatTime(seconds);
+        document.getElementById('timeFare').textContent = timeFare;
+        document.getElementById('initialTotal').textContent = initialTotal;
+        document.getElementById('tax').textContent = tax;
+        document.getElementById('totalAmount').textContent = totalAmount;
+      });
+
+      document.getElementById('payBtn').addEventListener('click', function () {
+        // Reset all and return to booking form
+        document.getElementById('fareSummary').style.display = 'none';
+        document.getElementById('ride').style.display = 'block';
+        document.getElementById('registrationForm').reset();
+      });
+    </script>
+    <script>
+      // function dav(){
+      //     let thegirls= document.getElementsByClassName('girl');
+      //     thegirls[0].style.background ='red';
+      // }
+  
+      // let profile={
+      //     firstname: 'sanny',
+      //     lastname: 'dauda',
+      //     fullname: function(){
+      //         return this.firstname + " " +this.lastname
+      //     }
+      // }
+      // console.log(profile.fullname())
+             let myinput;
+      function david (){
+          myinput= document.getElementById('anything').value;
+          let mylist = document.createElement('li');
+          let thecontent = document.createTextNode(myinput);
+  
+          if(!myinput== ''){
+              mylist.appendChild(thecontent);
+              let myspan= document.createElement('span');
+              let spancontent=document.createTextNode('\u0058');
+              myspan.className='mystuff';
+              myspan.style.background='red';
+              myspan.style.color='white';
+              myspan.style.cursor='pointer';
+              myspan.title='delete';
+              myspan.appendChild(spancontent);
+              mylist.appendChild(myspan);
+              // mylist.innerHTML= 'water';
+              let listbody= document.getElementById('plusone');
+              listbody.insertBefore(mylist, listbody.childNodes[1]);
+              document.body.appendChild(mylist);
+              document.getElementById('anything').value='';
+              document.getElementById('anything').focus();
+          }
+          
+  
+          let y= document.getElementsByClassName('mystuff');
+          let i;
+          for(i=0; i<y.length;  i++){
+              y[i].onclick= function(){
+                  let confirmdelete= confirm('are you sure you want to delete that?')
+                  if(confirmdelete){
+                       this.parentNode.style.display='none'
+                  }
+                  
+              }
+          }
+      }
+      let ebube= function(){
+          if(!(myinput=='')){
+              david()
+          }
+      }
+      let myaddbtn= document.querySelector(".createbtn")
+      myaddbtn.addEventListener('click', function(){
+          if(!(myinput== '')){
+              david()
+          }
+      })
+      document.addEventListener('keyup', (x)=>{
+          if(x.key==='Enter'){
+              david()
+          }
+  
+      })
+  </script>
+    <!-- BOOTSTRAP JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -5,19 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vanilla javascript</title>
     <link rel="stylesheet" href="index.css">
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <ul class="list">
-        <li><a href="index.html">FIRST</a></li>
-        <li><a href="array.html">ARRAY</a></li>
-        <li><a href="diff.html">DIFF</a></li>
-        <li><a href="aboutme.html">ABOUT ME</a></li>
-        <li><a href="ntime.html">TIME</a></li>
-        <li><a href="com.html">COMPARISON</a></li>
-        <li><a href="sim.html">CALCULATOR</a></li>
-    </ul>
-    <h1>HISTORY OF JAVASCRIPT</h1>
-    <h2>JavaScript  Overview</h2>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" style="text-align: center;">
+              <a class="nav-link active" aria-current="page" href="index.html" style="color: black; font-size: 14px;">DOCUMENTATION</a>
+              <a class="nav-link" href="about.html" style="color: black;  font-size: 14px;">ABOUT ME</a>
+              <a class="nav-link" href="ntime.html" style="color: black;  font-size: 14px;">DAY EVENT</a>
+              <a class="nav-link" href="sim.html" style="color: black;  font-size: 14px;">CALCULATOR</a>
+              <a class="nav-link" href="game.html" style="color: black;  font-size: 14px;">GUESS GAME</a>
+              <a class="nav-link" href="work.html" style="color: black;  font-size: 14px;">TASK CREATION</a>
+              <a class="nav-link" href="name.html" style="color: black;  font-size: 14px;">FORM VALIDATION</a>
+              <a class="nav-link" href="hote.html" style="color: black;  font-size: 14px;">HOTEL</a>
+              <a class="nav-link" href="ride.html" style="color: black;  font-size: 14px;">RIDE</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br>
+      
+    <!-- <div class="drop">
+        <ul class="parent">
+            <li class="dropdown">
+                <ul class="list dropelement">
+                    <li><a href="index.html">FIRST</a></li>
+                    <li><a href="array.html">ARRAY</a></li>
+                    <li><a href="diff.html">DIFF</a></li>
+                    <li><a href="about.html">ABOUT ME</a></li>
+                    <li><a href="ntime.html">TIME</a></li>
+                    <li><a href="com.html">COMPARISON</a></li>
+                    <li><a href="sim.html">CALCULATOR</a></li>
+                </ul>
+        
+            </li>
+        </ul>
+        <i class="bi bi-menu-button-wide-fill parent" style="font-size: 30px;"></i>
+    
+    </div> -->
+    <h1>HISTORY OF JAVASCRIPT</h1> 
+    <br>
+    <h2 style="text-align: center;">JavaScript  Overview</h2>
     <p>
         JavaScript is a high-level, dynamic, and interpreted programming language that has become a cornerstone of web development. Created by Brendan Eich in 1995 while working at Netscape, JavaScript was initially designed for client-side scripting on the web.
     </p>
@@ -67,7 +103,257 @@
     <h3>
         Overall, JavaScript's versatility, ubiquity, and large community make it a fundamental language for web development and beyond.
     </h3>
+    <br>
 
+    <div>
+    <h1>COMPARE AND CONTRAST THE DIFFERENCE BETWEEN LER, VAR & CONST</h1>
+    <br>
+    <h2> Scope</h2>
+     <p>
+         var: Function scope, meaning it's accessible throughout the function it's declared in, including inner blocks.
+         let and const: Block scope, meaning they're only accessible within the block (e.g., if statement, loop, or function) they're declared in.
+     </p>
+     <h2>Hoisting</h2>
+     <p>
+         var: Variables are "hoisted" to the top of their scope, regardless of where the actual declaration is made. This means you can use a var variable before it's declared.
+          let and const: Also hoisted, but not initialized until they're declared. Trying to use them before declaration results in a ReferenceError.
+     </p>
+     <h2>Reassignment</h2>
+     <p>
+         var and let: Can be reassigned.
+      const: Cannot be reassigned. However, if the value is an object or array, its properties or elements can still be modified.
+     </p>
+     <h2>Best Practices</h2>
+     <p>
+         - Use const for values that shouldn't change.
+         - Use let for values that may change.
+         - Avoid using var unless you need function scope.
+     </p>
+    </div>
+
+    <div>
+        <h1>Logical vs Comparison Operators</h1>
+        <br>
+        <h2>What Are Comparison Operators?</h2>
+        <p><strong>Definition:</strong> Comparison operators compare two values and return a Boolean result: either <code>true</code> or <code>false</code>.</p>
+      
+        <h3>Common Comparison Operators</h3>
+        <table>
+          <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+          <tr><td>==</td><td>Equal to (value)</td><td><code>5 == "5"</code></td><td>true</td></tr>
+          <tr><td>===</td><td>Equal to (value & type)</td><td><code>5 === "5"</code></td><td>false</td></tr>
+          <tr><td>!=</td><td>Not equal to</td><td><code>5 != 4</code></td><td>true</td></tr>
+          <tr><td>!==</td><td>Not equal (value & type)</td><td><code>5 !== "5"</code></td><td>true</td></tr>
+          <tr><td>></td><td>Greater than</td><td><code>10 > 7</code></td><td>true</td></tr>
+          <tr><td><</td><td>Less than</td><td><code>3 < 5</code></td><td>true</td></tr>
+          <tr><td>>=</td><td>Greater than or equal to</td><td><code>5 >= 5</code></td><td>true</td></tr>
+          <tr><td><=</td><td>Less than or equal to</td><td><code>4 <= 3</code></td><td>false</td></tr>
+        </table>
+      
+        <h3>Example:</h3>
+        <pre><code>let age = 18;
+      console.log(age >= 18); // true
+      console.log(age == "18"); // true (in JS)</code></pre>
+      
+        <h2>What Are Logical Operators?</h2>
+        <p><strong>Definition:</strong> Logical operators combine or invert Boolean values (usually from comparisons).</p>
+      
+        <h3>Common Logical Operators</h3>
+        <table>
+          <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+          <tr><td>&&</td><td>AND — both must be true</td><td><code>true && true</code></td><td>true</td></tr>
+          <tr><td>||</td><td>OR — one must be true</td><td><code>true || false</code></td><td>true</td></tr>
+          <tr><td>!</td><td>NOT — inverts the result</td><td><code>!true</code></td><td>false</td></tr>
+        </table>
+      
+        <h3>Example:</h3>
+        <pre><code>let age = 20;
+      let hasID = true;
+      
+      if (age >= 18 && hasID) {
+        console.log("You can enter.");
+      }</code></pre>
+      
+        <h2>Key Differences</h2>
+        <table>
+          <tr><th>Feature</th><th>Comparison Operators</th><th>Logical Operators</th></tr>
+          <tr><td>Purpose</td><td>Compare values</td><td>Combine or invert Boolean logic</td></tr>
+          <tr><td>Return Type</td><td>Boolean</td><td>Boolean</td></tr>
+          <tr><td>Examples</td><td><code>==, >, !=</code></td><td><code>&&, ||, !</code></td></tr>
+          <tr><td>Used With</td><td>Values</td><td>Booleans</td></tr>
+          <tr><td>Common Use</td><td>Checking if values match</td><td>Combining multiple conditions</td></tr>
+        </table>
+      
+        <h2>Combined Example</h2>
+        <pre><code>let score = 85;
+      let passed = score >= 50;
+      let hasCertificate = true;
+      
+      if (passed && hasCertificate) {
+        console.log("You passed and are certified!");
+      }</code></pre>
+      
+        <h2>Summary</h2>
+        <table>
+          <tr><th>Operator Type</th><th>Example</th><th>Meaning</th></tr>
+          <tr><td>Comparison</td><td><code>a == b</code></td><td>Are a and b equal?</td></tr>
+          <tr><td>Logical</td><td><code>a && b</code></td><td>Are both a and b true?</td></tr>
+        </table>
+    </div>
+    <br>
+    <div>  
+        <h1>JavaScript Concepts: Scope, Hoisting, Closure</h1>
+        <br>
+
+        <h2>1. Scope</h2>
+        <p><strong>Scope</strong> determines the visibility of variables. JavaScript has global scope, function scope, and block scope (with <code>let</code> and <code>const</code>).</p>
+        <pre><code>
+        // Global Scope
+        let globalVar = "I'm global";
+
+        function testScope() {
+        // Function Scope
+        let localVar = "I'm local";
+        console.log(globalVar); // ✅ Accessible
+        console.log(localVar);  // ✅ Accessible
+        }
+
+        testScope();
+        // console.log(localVar); ❌ Error: localVar is not defined outside
+        </code></pre>
+
+        <h2>2. Hoisting</h2>
+        <p><strong>Hoisting</strong> means variables and function declarations are moved to the top of their scope before code execution. Only <code>var</code> and function declarations are hoisted.</p>
+        <pre><code>
+        console.log(x); // ✅ undefined (because of hoisting)
+        var x = 10;
+
+        hoistedFunction(); // ✅ Works
+        function hoistedFunction() {
+        console.log("I was hoisted!");
+        }
+
+        // console.log(y); ❌ Error
+        // let y = 5; // let and const are NOT hoisted like var
+        </code></pre>
+
+        <h2>3. Closure</h2>
+        <p><strong>Closure</strong> is when a function remembers and has access to variables from its outer function even after the outer function has returned.</p>
+        <pre><code>
+        function outerFunction() {
+        let count = 0;
+
+        return function innerFunction() {
+            count++;
+            console.log("Count:", count);
+        };
+        }
+
+        const counter = outerFunction();
+        counter(); // Count: 1
+        counter(); // Count: 2
+        counter(); // Count: 3
+        </code></pre>
+    </div>
+    <br>
+    <div>
+        <h1>JavaScript Data Types and Their Methods</h1>
+        <br>
+        <!-- STRING -->
+        <h2>1. String Methods</h2>
+        <pre><code>
+      let text = "Hello, JavaScript!";
+      
+      console.log(text.length);         // 18
+      console.log(text.toUpperCase()); // "HELLO, JAVASCRIPT!"
+      console.log(text.toLowerCase()); // "hello, javascript!"
+      console.log(text.includes("Java")); // true
+      console.log(text.replace("JavaScript", "World")); // "Hello, World!"
+      console.log(text.slice(0, 5)); // "Hello"
+      </code></pre>
+      
+        <!-- NUMBER -->
+        <h2>2. Number Methods</h2>
+        <pre><code>
+      let num = 42.567;
+      
+      console.log(num.toFixed(2));   // "42.57"
+      console.log(num.toString());   // "42.567"
+      console.log(Number.isInteger(num)); // false
+      console.log(Math.round(num));  // 43
+      console.log(Math.floor(num));  // 42
+      console.log(Math.ceil(num));   // 43
+      </code></pre>
+      
+        <!-- BOOLEAN -->
+        <h2>3. Boolean Methods (via logic)</h2>
+        <pre><code>
+      let isTrue = true;
+      let isFalse = false;
+      
+      console.log(Boolean(0));      // false
+      console.log(Boolean("Hello"));// true
+      console.log(!isTrue);         // false
+      console.log(isTrue && isFalse); // false
+      console.log(isTrue || isFalse); // true
+      </code></pre>
+      
+        <!-- ARRAY -->
+        <h2>4. Array Methods</h2>
+        <pre><code>
+      let fruits = ["apple", "banana", "cherry"];
+      
+      console.log(fruits.length);        // 3
+      console.log(fruits.push("date"));  // Adds "date", returns 4
+      console.log(fruits.pop());         // Removes "date"
+      console.log(fruits.join(", "));    // "apple, banana, cherry"
+      console.log(fruits.indexOf("banana")); // 1
+      console.log(fruits.includes("apple")); // true
+      </code></pre>
+      
+        <!-- OBJECT -->
+        <h2>5. Object Methods</h2>
+        <pre><code>
+      let person = {
+        name: "John",
+        age: 30,
+        job: "Developer"
+      };
+      
+      console.log(Object.keys(person));   // ["name", "age", "job"]
+      console.log(Object.values(person)); // ["John", 30, "Developer"]
+      console.log(Object.entries(person));// [["name","John"],["age",30],["job","Developer"]]
+      console.log(person.hasOwnProperty("name")); // true
+      </code></pre>
+      
+        <!-- UNDEFINED & NULL -->
+        <h2>6. Undefined & Null</h2>
+        <pre><code>
+      let x;
+      console.log(x); // undefined
+      
+      let y = null;
+      console.log(y); // null
+      
+      console.log(typeof x); // "undefined"
+      console.log(typeof y); // "object"
+      </code></pre>
+      
+        <!-- FUNCTION -->
+        <h2>7. Function as a Data Type</h2>
+        <pre><code>
+      function greet(name) {
+        return "Hello " + name;
+      }
+      
+      console.log(greet("Alice")); // "Hello Alice"
+      console.log(typeof greet);   // "function"
+      </code></pre>
+      
+    </div>
+    
     <script src="index.js"></script>
+    <!-- BOOTSTRAP JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

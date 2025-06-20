@@ -1,0 +1,36 @@
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.submenu{
+    display: flex;
+    flex-direction: row;
+}
+.name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+form{
+    background: blueviolet;
+    padding: 20px;
+    border-radius: 20px;
+}
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+    .menu,
+    .submenu,
+    .name {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    form {
+      padding: 15px;
+    }
+    img{
+        width: 300px;
+    }
+  }

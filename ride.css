@@ -1,0 +1,16 @@
+body{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4)),url(RIDE.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-color: rgba(5, 5, 5, 0.7);  */
+    margin: 0% auto;
+    padding: 0% auto;
+    box-sizing: border-box;
+    height: 100vh;
+}
+#ride{
+    justify-self: center;
+    border-radius: 20px;
+    padding: 50px;
+}
